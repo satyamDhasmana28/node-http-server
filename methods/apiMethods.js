@@ -30,20 +30,22 @@ function postMethod(req, res) {
 		res.writeHead(200, { "Content-Type": "application/json" });
 		// console.log(req.body);
 		let body = "";
-		req.on("data", (chunck) => { 
+		req.on("data", (chunck) => {
 			body += chunck;
-		})
-		req.on("end", () => { 
+		});
+		req.on("end", () => {
 			console.log(body);
-		})
+		});
 		res.end();
 	} else {
 		res.writeHead(404, { "Content-Type": "application/json" });
 
-		res.write(JSON.stringify({
-			title: "not found",
-			message: `no route found associated with ${req.url}`,
-		}));
+		res.write(
+			JSON.stringify({
+				title: "not found",
+				message: `no route found associated with ${req.url}`,
+			})
+		);
 		res.end();
 	}
 }
@@ -59,10 +61,12 @@ function putMethod(req, res) {
 		res.end();
 	} else {
 		res.writeHead(404, { "Content-Type": "application/json" });
-   res.write(JSON.stringify({
-			title: "not found",
-			message: `no route found associated with ${req.url}`,
-		}));
+		res.write(
+			JSON.stringify({
+				title: "not found",
+				message: `no route found associated with ${req.url}`,
+			})
+		);
 		res.end();
 	}
 }
@@ -78,10 +82,12 @@ function deleteMethod() {
 		res.end();
 	} else {
 		res.writeHead(404, { "Content-Type": "application/json" });
-		res.write(JSON.stringify({
-			title: "not found",
-			message: `no route found associated with ${req.url}`,
-		}));
+		res.write(
+			JSON.stringify({
+				title: "not found",
+				message: `no route found associated with ${req.url}`,
+			})
+		);
 		res.end();
 	}
 }
